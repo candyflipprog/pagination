@@ -3,11 +3,32 @@
     <head>
         <title>Articles</title>
         <script src="script.js" defer type="module"></script>
-        <script src="renderingText.js" defer type="module"></script>
+        <link rel="stylesheet" href="./assets/pageStyle.css">
     </head>
     <body>
         <div id="article">
+            <h1 id="main_title"></h1>
             <p id="content">
+                <script type="module">
+                    import { getArticles } from "./modules/getArticles.js";
+                    
+                    async function renderingText() {                        
+                        let URL = new URLSearchParams(window.location.search);
+
+                        let [hrefURL, urlID] = URL.toString().split("=");
+                        let content = document.getElementById("content");
+                        let title = document.getElementById("main_title");
+                        
+                        let articles = await getArticles(urlID);
+                        
+                        title.textContent = articles.data.title;
+                        content.textContent = articles.data.body;
+                    };
+
+                    document.addEventListener("DOMContentLoaded", () => {
+                        renderingText();
+                    });
+                </script>
             </p> 
         </div>
     </body>
