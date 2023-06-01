@@ -1,7 +1,7 @@
 import { clearItems } from "./clearItems.js";
 import { getPages } from "./getPages.js";
 
-export function renderingPages() {
+export function renderingPages(id) {
   let buttons = document.querySelectorAll("#button_item");
 
   for (let i = 0; i < buttons.length; i++) {

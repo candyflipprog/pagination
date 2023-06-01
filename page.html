@@ -15,7 +15,7 @@
                     async function renderingText() {                        
                         let URL = new URLSearchParams(window.location.search);
 
-                        let [hrefURL, urlID] = URL.toString().split("=");
+                        const [hrefURL, urlID] = URL.toString().split("=");
                         let content = document.getElementById("content");
                         let title = document.getElementById("main_title");
                         
@@ -23,6 +23,8 @@
                         
                         title.textContent = articles.data.title;
                         content.textContent = articles.data.body;
+
+                        title.style.userSelect = "none";
                     };
 
                     document.addEventListener("DOMContentLoaded", () => {
